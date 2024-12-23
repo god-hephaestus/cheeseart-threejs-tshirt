@@ -11,21 +11,18 @@ const Tab2 = ({
   setFile,
   img,
   setLogo,
-  setFull,
 }: {
   changeColor: (rgb: Irgb) => void;
   color: Irgb;
   setFile: Dispatch<File | null>;
   img: string | null;
   setLogo: Dispatch<string>;
-  setFull: Dispatch<string>;
 }) => {
   const [tab, setTab] = useState(0);
   const [textColor, setTextColor] = useState("#fff");
   const [textLogo, setTextLogo] = useState("");
   const [enLogo, setEnLogo] = useState(false);
   const [enText, setEnText] = useState(false);
-  const [enFull, setEnFull] = useState(false);
 
   useEffect(() => {
     console.log("textLogo", textLogo);
@@ -86,13 +83,10 @@ const Tab2 = ({
             <FilePicker
               img={img}
               setLogo={setLogo}
-              setFull={setFull}
               setFile={setFile}
               color={color}
               enLogo={enLogo}
               setEnLogo={setEnLogo}
-              enFull={enFull}
-              setEnFull={setEnFull}
             />
           )}
           {tab === 3 && (

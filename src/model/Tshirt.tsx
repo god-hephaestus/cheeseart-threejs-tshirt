@@ -7,7 +7,6 @@ import { Irgb } from "../types";
 
 const Tshirt = ({
   logo,
-  full,
   color,
   logoP,
   logoS,
@@ -15,7 +14,6 @@ const Tshirt = ({
   isLogo,
 }: {
   logo: string;
-  full: string;
   color: Irgb;
   logoP: number;
   logoS: number;
@@ -25,13 +23,11 @@ const Tshirt = ({
   const { nodes, materials } = useGLTF(modelGltf) as any;
 
   const logoTex = useTexture(logo);
-  const fullTex = useTexture(full);
 
   useEffect(() => {
     console.log("logo:", logo);
   }, [logo]);
 
-  fullTex.colorSpace = THREE.SRGBColorSpace;
   logoTex.colorSpace = THREE.SRGBColorSpace;
 
   useEffect(() => {

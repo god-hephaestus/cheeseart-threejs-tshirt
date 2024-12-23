@@ -12,7 +12,6 @@ const Home = () => {
   const [logoS, setLogoS] = useState(0);
   const [logoP, setLogoP] = useState(1);
   const [logo, setLogo] = useState("./logo.png");
-  const [full, setFull] = useState("./full.jpg");
   const [file, setFile] = useState<File | null>(null);
   const [img, setImg] = useState<string | null>(null);
 
@@ -67,7 +66,6 @@ const Home = () => {
           color={color}
           logo={logo}
           isLogo={isLogo}
-          full={full}
           logoP={logoP}
           logoS={logoS}
         />
@@ -85,7 +83,6 @@ const Home = () => {
         setFile={setFile}
         img={img}
         setLogo={setLogo}
-        setFull={setFull}
       />
       <Tab3
         color={color}

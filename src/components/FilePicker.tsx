@@ -6,23 +6,17 @@ import { Irgb } from "../types";
 const FilePicker = ({
   img,
   setLogo,
-  setFull,
   setFile,
   color,
   enLogo,
   setEnLogo,
-  enFull,
-  setEnFull,
 }: {
   img: string | null;
   setLogo: Dispatch<string>;
-  setFull: Dispatch<string>;
   setFile: Dispatch<File>;
   color: Irgb;
   enLogo: boolean;
   setEnLogo: Dispatch<boolean>;
-  enFull: boolean;
-  setEnFull: Dispatch<boolean>;
 }) => {
   const handleClick = (ind: number) => {
     if (img) {
@@ -32,16 +26,10 @@ const FilePicker = ({
           else setLogo("./artstore.png");
           setEnLogo(!enLogo);
           break;
-        case 2:
-          if (!enFull) setFull(img);
-          else setFull("./full.jpg");
-          setEnFull(!enFull);
-          break;
       }
     }
   };
   const reset = () => {
-    setEnFull(false);
     setEnLogo(false);
   };
 
@@ -82,8 +70,8 @@ const FilePicker = ({
         <Button4
           color={color}
           text={"Full"}
+          active={enLogo}
           ind={2}
-          active={enFull}
           handleClick={handleClick}
         />
       </div>

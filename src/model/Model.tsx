@@ -11,7 +11,6 @@ const Model = ({
   color,
   logo,
   isLogo,
-  full,
   logoP,
   logoS,
 }: {
@@ -21,7 +20,6 @@ const Model = ({
   isLogo: boolean;
   logoS: number;
   logoP: number;
-  full: string;
 }) => {
   return (
     <Canvas
@@ -36,7 +34,6 @@ const Model = ({
         <hemisphereLight groundColor={"#111"} intensity={0.01} />
         <Tshirt
           logo={logo}
-          full={full}
           color={color}
           logoP={logoP}
           logoS={logoS}
