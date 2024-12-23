@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { Model } from "../model";
 import { Tab1, Tab2, Tab3, Header } from "../containers";
-import { reader, doGsap, saveStates } from "../helper";
+import { reader, doGsap, saveStates, loadStates } from "../helper";
 import { Irgb } from "../types";
 
 const Home = () => {
@@ -29,7 +29,20 @@ const Home = () => {
 
   const handleSaveState = () => {
     const stateToSave = { logo, logoP, logoS, color };
-    saveStates(stateToSave); // Save the current state
+    saveStates(stateToSave);
+  };
+
+  const handleLoadState = async (file: File) => {
+    try {
+      const savedState: any = await loadStates(file);
+      const { logo, logoP, logoS, color } = savedState;
+      setLogo(logo);
+      setLogoP(logoP);
+      setLogoS(logoS);
+      setColor(color);
+    } catch (error) {
+      console.error("Error loading state:", error);
+    }
   };
 
   const handleLogoP = (ind: number) => {
@@ -76,6 +89,7 @@ const Home = () => {
         handleLogo={handleLogo}
         isLogo={isLogo}
         handleSaveState={handleSaveState}
+        handleLoadState={handleLoadState}
       />
       <Tab2
         changeColor={changeColor}

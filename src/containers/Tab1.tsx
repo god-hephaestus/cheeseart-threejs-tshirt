@@ -8,11 +8,13 @@ const Tab1 = ({
   handleLogo,
   isLogo,
   handleSaveState,
+  handleLoadState,
 }: {
   color: Irgb;
   handleLogo: () => void;
   isLogo: boolean;
   handleSaveState: () => void;
+  handleLoadState: (file: File) => void;
 }) => {
   const handleClick = (ind: number) => {
     switch (ind) {
@@ -25,9 +27,18 @@ const Tab1 = ({
       case 3:
         handleSaveState();
         break;
+      case 4:
+        document.getElementById("loadFileInput")?.click();
+        break;
     }
   };
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      handleLoadState(file);
+    }
+  };
   return (
     <section
       style={{
@@ -55,7 +66,21 @@ const Tab1 = ({
         color={color}
         ind={3}
         handleClick={handleClick}
-      ></Button2>
+      />
+      <Button2
+        img={save}
+        active={false}
+        color={color}
+        ind={4}
+        handleClick={handleClick}
+      />
+      <input
+        type="file"
+        id="loadFileInput"
+        accept=".json"
+        style={{ display: "none" }}
+        onChange={handleFileChange}
+      />
     </section>
   );
 };
