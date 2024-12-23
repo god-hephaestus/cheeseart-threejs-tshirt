@@ -84,6 +84,12 @@ const Home = () => {
         />
       </section>
       <Header color={color} />
+      <div className="absolute top-[15px] left-[50%] text-lg text-white">
+        <button
+          className="bg-white p-5"
+          onClick={() => setLogo("/public/pd.png")}
+        ></button>
+      </div>
       <Tab1
         color={color}
         handleLogo={handleLogo}
