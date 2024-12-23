@@ -6,13 +6,13 @@ import { Irgb } from "../types";
 const Tab1 = ({
   color,
   handleLogo,
-  handleFull,
   isLogo,
+  handleSaveState,
 }: {
   color: Irgb;
   handleLogo: () => void;
-  handleFull: () => void;
   isLogo: boolean;
+  handleSaveState: () => void;
 }) => {
   const handleClick = (ind: number) => {
     switch (ind) {
@@ -23,7 +23,7 @@ const Tab1 = ({
         canvasDownloader();
         break;
       case 3:
-        handleFull();
+        handleSaveState();
         break;
     }
   };

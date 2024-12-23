@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
-
 import { Model } from "../model";
 import { Tab1, Tab2, Tab3, Header } from "../containers";
-import { reader, doGsap } from "../helper";
+import { reader, doGsap, saveStates } from "../helper";
 import { Irgb } from "../types";
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [color, setColor] = useState({ r: 167, g: 20, b: 20 });
   const [isLogo, setIsLogo] = useState(true);
-  const [isFull, setIsFull] = useState(false);
   const [logoS, setLogoS] = useState(0);
   const [logoP, setLogoP] = useState(1);
   const [logo, setLogo] = useState("./logo.png");
@@ -29,8 +27,10 @@ const Home = () => {
   const handleLogo = () => {
     setIsLogo(!isLogo);
   };
-  const handleFull = () => {
-    setIsFull(!isFull);
+
+  const handleSaveState = () => {
+    const stateToSave = { logo, logoP, logoS, color };
+    saveStates(stateToSave); // Save the current state
   };
 
   const handleLogoP = (ind: number) => {
@@ -68,7 +68,6 @@ const Home = () => {
           logo={logo}
           isLogo={isLogo}
           full={full}
-          isFull={isFull}
           logoP={logoP}
           logoS={logoS}
         />
@@ -77,8 +76,8 @@ const Home = () => {
       <Tab1
         color={color}
         handleLogo={handleLogo}
-        handleFull={handleFull}
         isLogo={isLogo}
+        handleSaveState={handleSaveState}
       />
       <Tab2
         changeColor={changeColor}

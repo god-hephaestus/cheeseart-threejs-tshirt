@@ -12,7 +12,6 @@ const Model = ({
   logo,
   isLogo,
   full,
-  isFull,
   logoP,
   logoS,
 }: {
@@ -20,7 +19,6 @@ const Model = ({
   color: Irgb;
   logo: string;
   isLogo: boolean;
-  isFull: boolean;
   logoS: number;
   logoP: number;
   full: string;
@@ -43,7 +41,6 @@ const Model = ({
           logoP={logoP}
           logoS={logoS}
           isMobile={isMobile}
-          isFull={isFull}
           isLogo={isLogo}
         />
         <OrbitControls

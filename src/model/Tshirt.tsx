@@ -12,7 +12,6 @@ const Tshirt = ({
   logoP,
   logoS,
   isMobile,
-  isFull,
   isLogo,
 }: {
   logo: string;
@@ -21,7 +20,6 @@ const Tshirt = ({
   logoP: number;
   logoS: number;
   isMobile: boolean;
-  isFull: boolean;
   isLogo: boolean;
 }) => {
   const { nodes, materials } = useGLTF(modelGltf) as any;
@@ -82,11 +80,6 @@ const Tshirt = ({
         position={[0, isMobile ? 0.35 : 0.1, 0]}
         dispose={null}
       >
-        {isFull && (
-          <Decal position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1}>
-            <meshBasicMaterial map={fullTex} />
-          </Decal>
-        )}
         {isLogo && (
           <Decal
             position={[genP(), 0.08, 0.13]}
